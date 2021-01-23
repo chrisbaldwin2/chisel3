@@ -55,7 +55,7 @@ trait LFSR extends PRNG {
       super.resetValue
 
     case None => {
-      val res = WireDefault(Vec(width, Bool()), DontCare)
+      val res = WireDefault.foo(Vec(width, Bool()), DontCare)
 
       reduction match {
         case XOR  => res(0) := true.B

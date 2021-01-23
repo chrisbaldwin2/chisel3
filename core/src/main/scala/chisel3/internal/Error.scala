@@ -55,10 +55,10 @@ class ChiselException(message: String, cause: Throwable = null) extends Exceptio
     }
 
     val trimmedLeft = throwable.getStackTrace().view.dropWhile(isBlacklisted)
-    val trimmedReverse = trimmedLeft.reverse
+    val trimmedReverse = trimmedLeft.toIndexedSeq.reverse.view
       .dropWhile(ste => !ste.getClassName.startsWith(builderName))
       .dropWhile(isBlacklisted)
-    trimmedReverse.reverse.toArray
+    trimmedReverse.toIndexedSeq.reverse.toArray
   }
 
   /** trims the top of the stack of elements belonging to [[blacklistPackages]]
