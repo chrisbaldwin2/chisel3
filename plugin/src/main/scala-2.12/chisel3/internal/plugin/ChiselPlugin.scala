@@ -11,8 +11,11 @@ class ChiselPlugin(val global: Global) extends Plugin {
   val name = "chiselplugin"
   val description = "Plugin for Chisel 3 Hardware Description Language"
   val components: List[PluginComponent] = List[PluginComponent](
+
+    //new ChiselComponent(global),
     new AutoclonetypeComponent(global),
-    new ChiselComponent(global)
   )
+
+  //override def processOptions(options: List[String], error: String => Unit): Unit = super.processOptions(options, error)
 }
 

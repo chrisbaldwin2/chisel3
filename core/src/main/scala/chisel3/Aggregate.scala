@@ -808,7 +808,10 @@ abstract class Bundle(implicit compileOptions: CompileOptions) extends Record {
   private val _containingModule: Option[BaseModule] = Builder.currentModule
   private val _containingBundles: Seq[Bundle] = Builder.updateBundleStack(this)
 
-  override def cloneType : this.type = {
+  def _cloneTypeImpl: this.type = ???
+  override def cloneType: this.type = _cloneTypeImpl
+
+  def cloneType2 : this.type = {
     // This attempts to infer constructor and arguments to clone this Bundle subtype without
     // requiring the user explicitly overriding cloneType.
     import scala.language.existentials
